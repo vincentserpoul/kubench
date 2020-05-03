@@ -1,4 +1,4 @@
-# kubench
+# kubench  ![Shellcheck](https://github.com/vincentserpoul/kubench/workflows/Shellcheck/badge.svg?branch=master)
 
 # Goal
 
