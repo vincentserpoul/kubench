@@ -1,0 +1,16 @@
+name: Build and Push images
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+    runs-on: docker:19.03
+    steps:
+    - uses: actions/checkout@v2
+    - name: Log in docker hub
+      run: docker login ${{ secrets.DOCKER_LOGIN}} --password ${{ secrets.DOCKER_TOKEN }}
+    - name: Build and push
+      run: ./applications/build-n-push-all.sh
