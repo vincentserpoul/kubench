@@ -9,8 +9,10 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-    - name: Log in docker hub
-      run: docker login ${{ secrets.DOCKER_LOGIN}} --password ${{ secrets.DOCKER_TOKEN }}
+    - uses: azure/docker-login@v1
+      with:
+        login-server: hub.docker.com    
+        username: ${{ secrets.DOCKER_LOGIN }}
+        password: ${{ secrets.DOCKER_TOKEN }}      
     - name: Build and push
       run: ./applications/build-n-push-all.sh
