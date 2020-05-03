@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bencher-deployment
+spec:
+  selector:
+    matchLabels:
+      app: bencher
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: bencher
+    spec:
+      containers:
+        - name: bencher
+          image: BASE_DOCKER_REPO/kubench-bencher:latest
+          imagePullPolicy: Always
+          command: ["sleep", "infinity"]
+          resources:
+            requests:
+              memory: "500Mi"
+              cpu: "250m"
+            limits:
+              memory: "7000Mi"
+              cpu: "3500m"
