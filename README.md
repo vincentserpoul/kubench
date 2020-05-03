@@ -52,6 +52,27 @@ results should appear in ./benches/raw-http-get/
 
 <!-- TODO -->
 
+## Using your own docker namespace
+
+You can re-build all images by running:
+
+```bash
+./applications/build-n-push.sh <YOUR_BASE_DOCKER_REPO>
+```
+
+You will also need to rebuild the bencher
+
+```bash
+docker build ./bencher/ --rm -t <YOUR_BASE_DOCKER_REPO>/kubench-bencher -f ./bencher/Dockerfile
+docker push <YOUR_BASE_DOCKER_REPO>/kubench-bencher
+```
+
+Then, you should be able to launch the benches with your own images:
+
+```bash
+./benches/raw-http-get/bench.sh <YOUR_BASE_DOCKER_REPO>
+```
+
 ## To do list
 
 - [ ] Add github actions to auto build containers
