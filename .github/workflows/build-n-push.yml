@@ -10,8 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: azure/docker-login@v1
-        with:
-          login-server: hub.docker.com    
+        with:   
           username: ${{ secrets.DOCKER_LOGIN }}
           password: ${{ secrets.DOCKER_TOKEN }}   
       - uses: actions/checkout@v2
