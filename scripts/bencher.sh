@@ -33,10 +33,9 @@ bencher_delete() {
 
 #=================================== b e n c h ================================#
 
-readonly BENCH_LENGTH_S=90
-readonly METRICS_DELAY_S=$(("$BENCH_LENGTH_S" * 2 / 3))
-readonly BENCH_RATE_S=2000
 readonly BENCH_DURATION_S=90
+readonly METRICS_DELAY_S=$(("$BENCH_DURATION_S" * 2 / 3))
+readonly BENCH_RATE_S=2000
 
 same_cluster_bench() {
     local -r APP_NAME=$1
