@@ -37,11 +37,19 @@ readonly BENCH_DURATION_S=90
 readonly METRICS_DELAY_S=$(("$BENCH_DURATION_S" * 2 / 3))
 readonly BENCH_RATE_S=2000
 
+# Send max of reqs
+same_cluster_bench_max() {
+    local -r APP_NAME=$1
+    local -r FOLDER=$2
+
+    same_cluster_bench_wrk "$APP_NAME" "$FOLDER" 0 "$BENCH_DURATION_S"
+}
+
 same_cluster_bench() {
     local -r APP_NAME=$1
     local -r FOLDER=$2
 
-    same_cluster_bench_vegeta "$APP_NAME" "$FOLDER" "$BENCH_RATE_S" "$BENCH_DURATION_S"
+    same_cluster_bench_wrk "$APP_NAME" "$FOLDER" "$BENCH_RATE_S" "$BENCH_DURATION_S"
 }
 
 same_cluster_bench_vegeta() {
@@ -61,7 +69,7 @@ same_cluster_bench_vegeta() {
     einfo "starting bench"
     metrics_get "$APP_NAME" "$FOLDER" &
     kubectl exec -it "$BENCH_POD" -c bencher -- /bin/sh -c \
-        "echo 'GET http://$APP_NAME' | vegeta attack -duration=""$BENCH_DURATION""s -workers 50 -rate ""$BENCH_RATE"" -output=/home/appuser/results.bin"
+        "echo 'GET http://$APP_NAME' | vegeta attack -duration=""$BENCH_DURATION""s -max-workers 500 -rate ""$BENCH_RATE"" -output=/home/appuser/results.bin"
     {
         echo '```'
         kubectl exec -it "$BENCH_POD" -c bencher -- /bin/sh -c \
@@ -75,12 +83,37 @@ same_cluster_bench_vegeta() {
     einfo "bench finished"
 }
 
+same_cluster_bench_wrk() {
+    local -r APP_NAME=$1
+    local -r FOLDER=$2
+    local -r BENCH_RATE=$3
+    local -r BENCH_DURATION=$4
+
+    local -r BENCH_POD=$(kubectl get pods --selector=app=bencher -o name --no-headers=true | head -n 1)
+
+    einfo "heating up pods"
+
+    kubectl exec -it "$BENCH_POD" -c bencher -- /bin/sh -c \
+        "wrk --latency -t4 -c200 -d1s http://$APP_NAME"
+    sleep 5s
+
+    einfo "starting bench"
+    metrics_get "$APP_NAME" "$FOLDER" &
+    kubectl exec -it "$BENCH_POD" -c bencher -- /bin/sh -c \
+        "wrk --latency -t4 -c200 -d""$BENCH_DURATION""s http://$APP_NAME" >>"$(printf "$FOLDER/results_%s_bench.md" "$APP_NAME")"
+
+    einfo "bench finished"
+}
+
 metrics_get() {
     local -r APP_NAME=$1
     local -r FOLDER=$2
 
     sleep "$METRICS_DELAY_S"s
     {
+        echo '```'
+        kubectl get deployment
+        echo '```'
         echo '```'
         kubectl top pods
         echo '```'

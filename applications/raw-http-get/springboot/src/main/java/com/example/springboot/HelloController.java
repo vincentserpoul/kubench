@@ -8,7 +8,6 @@ public class HelloController {
 
 	@RequestMapping(value = "*")
 	public String index() throws InterruptedException {
-		Thread.sleep(26);
 		return "!";
 	}
 

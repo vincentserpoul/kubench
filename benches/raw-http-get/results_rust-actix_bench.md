@@ -1,35 +1,28 @@
 # HTTP rust-actix raw HTTP GET benchmarks
 
+Running 2m test @ http://rust-actix
+  4 threads and 200 connections
+```
+NAME                    READY   UP-TO-DATE   AVAILABLE   AGE
+bencher-deployment      1/1     1            1           5m36s
+rust-actix-deployment   6/6     6            6           89s
+```
 ```
 NAME                                     CPU(cores)   MEMORY(bytes)   
-bencher-deployment-55c46c6665-qxcxp      701m         10Mi            
-rust-actix-deployment-86b6c845c9-2s6nh   92m          3Mi             
-rust-actix-deployment-86b6c845c9-kpk27   96m          2Mi             
-rust-actix-deployment-86b6c845c9-qglng   81m          3Mi             
+bencher-deployment-55c46c6665-dvbvr      505m         5Mi             
+rust-actix-deployment-6c8c76c5c4-7wnds   317m         6Mi             
+rust-actix-deployment-6c8c76c5c4-ssncb   288m         6Mi             
+rust-actix-deployment-6c8c76c5c4-tqfx6   370m         7Mi             
 ```
  
-```
-Requests      [total, rate, throughput]         180000, 2000.01, 1999.39
-Duration      [total, attack, wait]             1m30s, 1m30s, 27.868ms
-Latencies     [min, mean, 50, 90, 95, 99, max]  26.601ms, 27.985ms, 27.941ms, 28.558ms, 28.737ms, 29.36ms, 222.63ms
-Bytes In      [total, mean]                     180000, 1.00
-Bytes Out     [total, mean]                     0, 0.00
-Success       [ratio]                           100.00%
-Status Codes  [code:count]                      200:180000  
-Error Set:
- 
-Bucket           #       %       Histogram
-[0s,     10ms]   0       0.00%   
-[10ms,   20ms]   0       0.00%   
-[20ms,   30ms]   179051  99.47%  ##########################################################################
-[30ms,   40ms]   935     0.52%   
-[40ms,   50ms]   1       0.00%   
-[50ms,   60ms]   0       0.00%   
-[60ms,   70ms]   0       0.00%   
-[70ms,   80ms]   0       0.00%   
-[80ms,   90ms]   0       0.00%   
-[90ms,   100ms]  0       0.00%   
-[100ms,  200ms]  3       0.00%   
-[200ms,  300ms]  10      0.01%   
-[300ms,  +Inf]   0       0.00%   
-```
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    27.68ms  830.45us  74.04ms   87.34%
+    Req/Sec     1.81k    63.46     2.02k    72.93%
+  Latency Distribution
+     50%   27.60ms
+     75%   27.98ms
+     90%   28.34ms
+     99%   30.01ms
+  649058 requests in 1.50m, 72.42MB read
+Requests/sec:   7205.02
+Transfer/sec:    823.23KB

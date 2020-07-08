@@ -7,6 +7,8 @@ RUN wget https://github.com/tsenart/vegeta/releases/download/v12.8.3/vegeta-12.8
 
 RUN wget https://raw.githubusercontent.com/grpc/grpc-go/master/examples/helloworld/helloworld/helloworld.proto;
 
+RUN apk add wrk
+
 # Create appuser
 RUN adduser -D -g '' appuser
 

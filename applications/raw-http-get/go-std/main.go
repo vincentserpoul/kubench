@@ -16,8 +16,6 @@ func main() {
 }
 
 func sayHello(w http.ResponseWriter, r *http.Request) {
-	time.Sleep(artificialServiceLatency)
-
 	if _, err := w.Write([]byte("!")); err != nil {
 		panic(err)
 	}

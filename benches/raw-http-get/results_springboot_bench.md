@@ -1,35 +1,29 @@
 # HTTP springboot raw HTTP GET benchmarks
 
+Running 2m test @ http://springboot
+  4 threads and 200 connections
+```
+NAME                    READY   UP-TO-DATE   AVAILABLE   AGE
+bencher-deployment      1/1     1            1           7m41s
+springboot-deployment   6/11    11           6           95s
+```
 ```
 NAME                                     CPU(cores)   MEMORY(bytes)   
-bencher-deployment-55c46c6665-qxcxp      714m         10Mi            
-springboot-deployment-69844fc59f-62hcn   322m         150Mi           
-springboot-deployment-69844fc59f-68pv2   234m         127Mi           
-springboot-deployment-69844fc59f-x6d4l   174m         128Mi           
+bencher-deployment-55c46c6665-dvbvr      323m         6Mi             
+springboot-deployment-6cfd845f86-48gb7   797m         310Mi           
+springboot-deployment-6cfd845f86-hpr2n   890m         296Mi           
+springboot-deployment-6cfd845f86-twd7k   545m         303Mi           
 ```
  
-```
-Requests      [total, rate, throughput]         180000, 2000.02, 1999.42
-Duration      [total, attack, wait]             1m30s, 1m30s, 27.033ms
-Latencies     [min, mean, 50, 90, 95, 99, max]  26.559ms, 28.123ms, 27.134ms, 27.635ms, 28.384ms, 37.708ms, 1.585s
-Bytes In      [total, mean]                     180000, 1.00
-Bytes Out     [total, mean]                     0, 0.00
-Success       [ratio]                           100.00%
-Status Codes  [code:count]                      200:180000  
-Error Set:
- 
-Bucket           #       %       Histogram
-[0s,     10ms]   0       0.00%   
-[10ms,   20ms]   0       0.00%   
-[20ms,   30ms]   175268  97.37%  #########################################################################
-[30ms,   40ms]   3141    1.75%   #
-[40ms,   50ms]   355     0.20%   
-[50ms,   60ms]   204     0.11%   
-[60ms,   70ms]   180     0.10%   
-[70ms,   80ms]   168     0.09%   
-[80ms,   90ms]   32      0.02%   
-[90ms,   100ms]  35      0.02%   
-[100ms,  200ms]  408     0.23%   
-[200ms,  300ms]  150     0.08%   
-[300ms,  +Inf]   59      0.03%   
-```
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    27.46ms    4.89ms 453.60ms   96.10%
+    Req/Sec     1.83k    99.61     2.02k    75.60%
+  Latency Distribution
+     50%   26.56ms
+     75%   27.18ms
+     90%   29.37ms
+     99%   37.42ms
+  656947 requests in 1.50m, 71.54MB read
+  Socket errors: connect 0, read 0, write 452, timeout 0
+Requests/sec:   7291.25
+Transfer/sec:    813.04KB

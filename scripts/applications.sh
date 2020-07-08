@@ -18,11 +18,15 @@ application_deploy() {
     local -r APP=$1
     local -r BENCH=$2
     local -r BASE_DOCKER_REPO=${3:-vincentserpoul}
+    local -r WITH_HPA=${4:-false}
 
     einfo "deploying $APP"
 
     sed "s/BASE_DOCKER_REPO/$BASE_DOCKER_REPO/g" ./applications/"$BENCH"/"$APP"/k8s.yaml | kubectl apply -f -
     sleep 1s
+    if [[ $WITH_HPA ]]; then
+        kubectl apply -f ./applications/"$BENCH"/"$APP"/hpa.yaml
+    fi
     kubectl rollout status deployment.v1.apps/"$APP"-deployment
 }
 
@@ -34,5 +38,5 @@ application_delete() {
     einfo "deleting $APP"
 
     sed "s/BASE_DOCKER_REPO/$BASE_DOCKER_REPO/g" ./applications/"$BENCH"/"$APP"/k8s.yaml | kubectl delete -f -
-
+    kubectl delete -f ./applications/"$BENCH"/"$APP"/hpa.yaml
 }

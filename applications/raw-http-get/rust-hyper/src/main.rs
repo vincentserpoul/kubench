@@ -1,10 +1,8 @@
 use hyper::service::{make_service_fn, service_fn};
 use hyper::{Body, Request, Response, Server};
-use std::{convert::Infallible, net::SocketAddr, time::Duration};
-use tokio::time::delay_for;
+use std::{convert::Infallible, net::SocketAddr};
 
 async fn handle(_: Request<Body>) -> Result<Response<Body>, Infallible> {
-    delay_for(Duration::from_millis(26)).await;
     Ok(Response::new("!".into()))
 }
 
