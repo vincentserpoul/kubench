@@ -32,8 +32,6 @@ if [[ ! -d "$DIR" ]]; then DIR="$PWD"; fi
 # shellcheck source=/dev/null
 . "$DIR/scripts/utils.sh"
 # shellcheck source=/dev/null
-. "$DIR/scripts/k3d.sh"
-# shellcheck source=/dev/null
 . "$DIR/scripts/digital-ocean.sh"
 
 #============================  M a i n  ============================#
@@ -56,7 +54,12 @@ done
 
 if [ "$ACTION" == "create" ]; then
     if [ "$PROVIDER" == "k3d" ]; then
-        k3s_cluster_create kubench-k3d
+        k3d cluster create kubench-k3d \
+            --agents 2 \
+            --port 8080:80@agent[0] \
+            --update-default-kubeconfig \
+            --switch-context \
+            --wait
     elif [ "$PROVIDER" == "digitalocean" ]; then
         do_cluster_create kubench-do
     else
@@ -64,7 +67,7 @@ if [ "$ACTION" == "create" ]; then
     fi
 elif [ "$ACTION" == "delete" ]; then
     if [ "$PROVIDER" == "k3d" ]; then
-        k3s_cluster_delete kubench-k3d
+        k3d cluster delete kubench-k3d
     elif [ "$PROVIDER" == "digitalocean" ]; then
         do_cluster_delete kubench-do
     else
