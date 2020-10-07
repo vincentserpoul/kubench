@@ -1,0 +1,61 @@
+[package]
+name = "rust-dropshot"
+version = "0.1.0"
+authors = ["Vincent Serpoul <vincent@serpoul.com>"]
+edition = "2018"
+
+[dependencies]
+async-trait = "0.1"
+base64 = "0.13"
+bytes = "0.5"
+futures = "0.3"
+hostname = "0.3"
+http = "0.2"
+hyper = "0.13"
+indexmap = "1.6"
+openapiv3 = "0.3"
+paste = "1.0"
+serde_json = "1.0"
+serde_urlencoded = "0.7"
+slog-async = "2.5"
+slog-bunyan = "2.2"
+slog-json = "2.3"
+slog-term = "2.6"
+toml = "0.5"
+dropshot = "0.3"
+
+[dependencies.chrono]
+version = "0.4"
+features = [ "serde" ]
+
+[dependencies.serde]
+version = "1.0"
+features = [ "derive" ]
+
+[dependencies.slog]
+version = "2.5"
+features = [ "max_level_trace", "release_max_level_debug" ]
+
+[dependencies.tokio]
+version = "0.2"
+features = [ "full" ]
+
+[dependencies.uuid]
+version = "0.8"
+features = [ "serde", "v4" ]
+
+[dependencies.schemars]
+version = "0.7"
+features = [ "uuid" ]
+
+[dev-dependencies]
+expectorate = "1.0"
+lazy_static = "1.4"
+libc = "0.2"
+serde_with = "1.5"
+subprocess = "0.2"
+trybuild = "1.0"
+
+[dev-dependencies.schemars]
+version = "0.8"
+features = [ "chrono", "uuid" ]
