@@ -1,40 +1,28 @@
 # HTTP go-std raw HTTP GET benchmarks
 
+Running 2m test @ http://go-std
+  4 threads and 200 connections
 ```
 NAME                 READY   UP-TO-DATE   AVAILABLE   AGE
-bencher-deployment   1/1     1            1           78s
-go-std-deployment    3/3     3            3           75s
+bencher-deployment   1/1     1            1           106s
+go-std-deployment    3/3     3            3           90s
 ```
 ```
-NAME                                  CPU(cores)   MEMORY(bytes)   
-bencher-deployment-55c46c6665-dqsrw   1932m        31Mi            
-go-std-deployment-6884685f7b-98zbh    508m         8Mi             
-go-std-deployment-6884685f7b-ffr4x    522m         8Mi             
-go-std-deployment-6884685f7b-j52c8    523m         8Mi             
+NAME                                 CPU(cores)   MEMORY(bytes)   
+bencher-deployment-cf89ddc67-nbmsv   827m         5Mi             
+go-std-deployment-cf47f9986-t8lmm    104m         8Mi             
+go-std-deployment-cf47f9986-vmtxv    338m         9Mi             
+go-std-deployment-cf47f9986-zkr8h    343m         8Mi             
 ```
  
-```
-Requests      [total, rate, throughput]         1600890, 17787.14, 17781.41
-Duration      [total, attack, wait]             1m30s, 1m30s, 28.988ms
-Latencies     [min, mean, 50, 90, 95, 99, max]  26.079ms, 27.075ms, 26.31ms, 28.461ms, 30.372ms, 38.803ms, 107.896ms
-Bytes In      [total, mean]                     1600890, 1.00
-Bytes Out     [total, mean]                     0, 0.00
-Success       [ratio]                           100.00%
-Status Codes  [code:count]                      200:1600890  
-Error Set:
- 
-Bucket           #        %       Histogram
-[0s,     10ms]   0        0.00%   
-[10ms,   20ms]   0        0.00%   
-[20ms,   30ms]   1511099  94.39%  ######################################################################
-[30ms,   40ms]   76283    4.77%   ###
-[40ms,   50ms]   8616     0.54%   
-[50ms,   60ms]   3236     0.20%   
-[60ms,   70ms]   1034     0.06%   
-[70ms,   80ms]   459      0.03%   
-[80ms,   90ms]   102      0.01%   
-[90ms,   100ms]  53       0.00%   
-[100ms,  200ms]  8        0.00%   
-[200ms,  300ms]  0        0.00%   
-[300ms,  +Inf]   0        0.00%   
-```
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency     3.01ms    4.60ms 100.07ms   88.68%
+    Req/Sec    26.94k     4.58k   39.41k    71.95%
+  Latency Distribution
+     50%    0.98ms
+     75%    3.71ms
+     90%    8.29ms
+     99%   21.85ms
+  9640169 requests in 1.50m, 1.05GB read
+Requests/sec: 107017.40
+Transfer/sec:     11.94MB

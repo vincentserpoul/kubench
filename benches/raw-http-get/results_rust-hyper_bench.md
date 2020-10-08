@@ -4,25 +4,25 @@ Running 2m test @ http://rust-hyper
   4 threads and 200 connections
 ```
 NAME                    READY   UP-TO-DATE   AVAILABLE   AGE
-bencher-deployment      1/1     1            1           3m37s
-rust-hyper-deployment   12/12   12           12          88s
+bencher-deployment      1/1     1            1           3m15s
+rust-hyper-deployment   12/18   18           12          81s
 ```
 ```
-NAME                                   CPU(cores)   MEMORY(bytes)   
-bencher-deployment-55c46c6665-dvbvr    416m         5Mi             
-rust-hyper-deployment-8879d455-6262x   367m         3Mi             
-rust-hyper-deployment-8879d455-bdqnb   446m         3Mi             
-rust-hyper-deployment-8879d455-rtjfn   360m         3Mi             
+NAME                                     CPU(cores)   MEMORY(bytes)   
+bencher-deployment-cf89ddc67-jv47l       1052m        5Mi             
+rust-hyper-deployment-77cbf496b9-8rfnt   207m         3Mi             
+rust-hyper-deployment-77cbf496b9-8xbgw   651m         3Mi             
+rust-hyper-deployment-77cbf496b9-sn4l8   547m         3Mi             
 ```
  
   Thread Stats   Avg      Stdev     Max   +/- Stdev
-    Latency    28.02ms    0.97ms  57.90ms   81.90%
-    Req/Sec     1.78k    98.37     2.02k    67.02%
+    Latency     1.66ms    1.69ms 109.84ms   92.18%
+    Req/Sec    31.05k     3.85k   41.51k    70.89%
   Latency Distribution
-     50%   27.86ms
-     75%   28.38ms
-     90%   29.01ms
-     99%   30.99ms
-  639326 requests in 1.50m, 46.34MB read
-Requests/sec:   7100.03
-Transfer/sec:    526.96KB
+     50%    1.26ms
+     75%    1.96ms
+     90%    2.97ms
+     99%    8.40ms
+  11117014 requests in 1.50m, 805.75MB read
+Requests/sec: 123416.13
+Transfer/sec:      8.95MB

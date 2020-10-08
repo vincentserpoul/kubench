@@ -1,41 +1,29 @@
 # HTTP springboot raw HTTP GET benchmarks
 
+Running 2m test @ http://springboot
+  4 threads and 200 connections
 ```
 NAME                    READY   UP-TO-DATE   AVAILABLE   AGE
-bencher-deployment      1/1     1            1           7m2s
-springboot-deployment   3/3     3            3           77s
+bencher-deployment      1/1     1            1           7m31s
+springboot-deployment   6/6     6            6           88s
 ```
 ```
 NAME                                     CPU(cores)   MEMORY(bytes)   
-bencher-deployment-55c46c6665-dqsrw      29m          39Mi            
-springboot-deployment-6cfd845f86-76kbz   870m         338Mi           
-springboot-deployment-6cfd845f86-fcd8w   532m         241Mi           
-springboot-deployment-6cfd845f86-svgr2   689m         294Mi           
+bencher-deployment-cf89ddc67-nbmsv       314m         11Mi            
+springboot-deployment-79b9686d84-2rrfh   1814m        313Mi           
+springboot-deployment-79b9686d84-lzgg6   1183m        293Mi           
+springboot-deployment-79b9686d84-mpq62   1621m        313Mi           
 ```
  
-```
-Requests      [total, rate, throughput]         1407301, 15636.67, 15631.43
-Duration      [total, attack, wait]             1m30s, 1m30s, 28.73ms
-Latencies     [min, mean, 50, 90, 95, 99, max]  963.899µs, 30.316ms, 27.026ms, 38.219ms, 45.332ms, 61.308ms, 663.043ms
-Bytes In      [total, mean]                     1407279, 1.00
-Bytes Out     [total, mean]                     0, 0.00
-Success       [ratio]                           100.00%
-Status Codes  [code:count]                      0:22  200:1407279  
-Error Set:
-Get "http://springboot": dial tcp 0.0.0.0:0->10.43.155.226:80: connect: connection refused
- 
-Bucket           #        %       Histogram
-[0s,     10ms]   22       0.00%   
-[10ms,   20ms]   0        0.00%   
-[20ms,   30ms]   1029200  73.13%  ######################################################
-[30ms,   40ms]   259504   18.44%  #############
-[40ms,   50ms]   76192    5.41%   ####
-[50ms,   60ms]   27001    1.92%   #
-[60ms,   70ms]   7860     0.56%   
-[70ms,   80ms]   2900     0.21%   
-[80ms,   90ms]   1478     0.11%   
-[90ms,   100ms]  821      0.06%   
-[100ms,  200ms]  1811     0.13%   
-[200ms,  300ms]  321      0.02%   
-[300ms,  +Inf]   191      0.01%   
-```
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    25.49ms   82.05ms   1.90s    94.59%
+    Req/Sec     7.53k     3.53k   17.35k    59.00%
+  Latency Distribution
+     50%    5.40ms
+     75%   12.41ms
+     90%   39.66ms
+     99%  431.94ms
+  2697142 requests in 1.50m, 293.72MB read
+  Socket errors: connect 0, read 0, write 1026, timeout 1
+Requests/sec:  29946.02
+Transfer/sec:      3.26MB
