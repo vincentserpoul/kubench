@@ -1,3 +1,3 @@
 module vincentserpoul/kubench-go-std
 
-go 1.14
+go 1.15

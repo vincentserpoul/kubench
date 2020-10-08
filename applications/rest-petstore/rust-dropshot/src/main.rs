@@ -27,7 +27,7 @@ async fn main() -> Result<(), String> {
     // Start the server.
     let mut server = HttpServer::new(
         &ConfigDropshot {
-            bind_address: "127.0.0.1:8080".parse().unwrap(),
+            bind_address: "0.0.0.0:8080".parse().unwrap(),
         },
         api,
         Arc::new(()),

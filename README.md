@@ -1,4 +1,4 @@
-# kubench  ![Shellcheck](https://github.com/vincentserpoul/kubench/workflows/Shellcheck/badge.svg?branch=master)
+# kubench ![Shellcheck](https://github.com/vincentserpoul/kubench/workflows/Shellcheck/badge.svg?branch=master)
 
 # Goal
 
@@ -6,9 +6,9 @@ Benchmark different containerized applications within a kubernetes cluster.
 
 ## Pre-requisites
 
-- [k3d v1.7.0](https://github.com/rancher/k3d)
+- [k3d v3](https://github.com/rancher/k3d)
 - [kubectl v1.17.3](https://kubernetes.io/docs/tasks/tools/install-kubectl/)
-- [helm v3.1.2](https://helm.sh/docs/intro/install/)
+- [helm v3](https://helm.sh/docs/intro/install/)
 - [doctl v1.43.0](https://github.com/digitalocean/doctl) - if you re running in digitalocean
 
 ## Cluster management

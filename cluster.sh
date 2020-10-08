@@ -54,11 +54,9 @@ done
 
 if [ "$ACTION" == "create" ]; then
     if [ "$PROVIDER" == "k3d" ]; then
-        k3d cluster create kubench-k3d \
+        k3d cluster create "$CLUSTER_NAME" \
             --agents 2 \
             --port 8080:80@agent[0] \
-            --update-default-kubeconfig \
-            --switch-context \
             --wait
     elif [ "$PROVIDER" == "digitalocean" ]; then
         do_cluster_create kubench-do
@@ -67,9 +65,9 @@ if [ "$ACTION" == "create" ]; then
     fi
 elif [ "$ACTION" == "delete" ]; then
     if [ "$PROVIDER" == "k3d" ]; then
-        k3d cluster delete kubench-k3d
+        k3d cluster delete "$CLUSTER_NAME"
     elif [ "$PROVIDER" == "digitalocean" ]; then
-        do_cluster_delete kubench-do
+        do_cluster_delete "$CLUSTER_NAME"-do
     else
         echo "non existing provider: $PROVIDER"
     fi
