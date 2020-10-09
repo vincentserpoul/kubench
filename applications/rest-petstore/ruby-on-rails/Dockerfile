@@ -1,9 +1,10 @@
 ######################
 # Stage: Builder
-FROM ruby:2.7.1-alpine as Builder
+FROM ruby:2.7.0-alpine as Builder
 
 RUN apk add --update --no-cache \
-    build-base
+    build-base sqlite sqlite-dev tzdata
+
 WORKDIR /app
 
 # Install gems
@@ -15,20 +16,42 @@ RUN bundle config --global frozen 1 \
     && find /usr/local/bundle/gems/ -name "*.c" -delete \
     && find /usr/local/bundle/gems/ -name "*.o" -delete
 
+# COPY Gemfile .
+# COPY Gemfile.lock .
+# RUN bundle install --deployment --without development test
+
 # Add the Rails app
-ADD . /app
+COPY . /app
+
+# RUN bundle install
+# RUN bundle exec rake
+
+# FROM nginx:latest
+
+# COPY --from=builder /app/public /usr/share/nginx/html
 
 ###############################
 # Stage Final
-FROM ruby:2.7.1-alpine
+FROM ruby:2.7.0-alpine
 
 # Add Alpine packages
-RUN apk add --update --no-cache 
+RUN apk add --update --no-cache \
+    sqlite sqlite-dev tzdata
+
+ENV SECRET_KEY_BASE golangisawesome
+
+# Add user
+RUN addgroup -g 1000 -S app \
+    && adduser -u 1000 -S app -G app
+USER app
 
 # Copy app with gems from former build stage
 COPY --from=Builder /usr/local/bundle/ /usr/local/bundle/
+COPY --from=Builder --chown=app:app /app /app
 
 WORKDIR /app
 
 # Start up
-CMD ["bundle", "exec", "puma"]
+# CMD ["bundle", "exec", "puma"]
+CMD ["rails", "server", "-e", "production"]
+# CMD ["/bin/sh"]

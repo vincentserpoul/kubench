@@ -1,12 +1,21 @@
 class Api::PetsController < ApplicationController
-  before_action :set_pet, only: [:show, :update]
+  # before_action :set_pet, only: [:show, :update]
+  before_action :set_pet, only: [:update]
 
   def index
     render json: Pet.all
   end
 
   def show
-    render json: @pet
+    # render json: @pet
+    render json: {
+      id: nil,
+      category: nil,
+      name: 'Brickley',
+      photo_urls: [],
+      tags: nil,
+      status: nil,
+    }
   end
 
   def update
