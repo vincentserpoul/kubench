@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ruby-on-rails-deployment
+spec:
+  selector:
+    matchLabels:
+      app: ruby-on-rails
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: ruby-on-rails
+    spec:
+      affinity:
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchExpressions:
+                  - key: app
+                    operator: In
+                    values:
+                      - bencher
+              topologyKey: "kubernetes.io/hostname"
+      containers:
+        - name: ruby-on-rails
+          image: BASE_DOCKER_REPO/kubench-ruby-on-rails:latest
+          ports:
+            - containerPort: 8080
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: ruby-on-rails
+spec:
+  type: ClusterIP
+  selector:
+    app: ruby-on-rails
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
