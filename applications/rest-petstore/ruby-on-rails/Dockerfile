@@ -16,19 +16,8 @@ RUN bundle config --global frozen 1 \
     && find /usr/local/bundle/gems/ -name "*.c" -delete \
     && find /usr/local/bundle/gems/ -name "*.o" -delete
 
-# COPY Gemfile .
-# COPY Gemfile.lock .
-# RUN bundle install --deployment --without development test
-
 # Add the Rails app
 COPY . /app
-
-# RUN bundle install
-# RUN bundle exec rake
-
-# FROM nginx:latest
-
-# COPY --from=builder /app/public /usr/share/nginx/html
 
 ###############################
 # Stage Final
@@ -52,6 +41,4 @@ COPY --from=Builder --chown=app:app /app /app
 WORKDIR /app
 
 # Start up
-# CMD ["bundle", "exec", "puma"]
 CMD ["rails", "server", "-e", "production"]
-# CMD ["/bin/sh"]
