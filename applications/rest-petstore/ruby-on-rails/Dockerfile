@@ -1,6 +1,6 @@
 ######################
 # Stage: Builder
-FROM ruby:2.7.0-alpine as Builder
+FROM ruby:2.7.1-alpine as Builder
 
 RUN apk add --update --no-cache \
     build-base
@@ -20,7 +20,7 @@ ADD . /app
 
 ###############################
 # Stage Final
-FROM ruby:2.7.0-alpine
+FROM ruby:2.7.1-alpine
 
 # Add Alpine packages
 RUN apk add --update --no-cache 
