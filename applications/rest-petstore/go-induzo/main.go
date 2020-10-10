@@ -2,6 +2,7 @@ package main
 
 import (
 	"context"
+	"fmt"
 	"io"
 	"log"
 	"net/http"
@@ -19,6 +20,8 @@ func main() {
 
 	// Subrouters:
 	m := &PetAPI{}
+
+	fmt.Println(xid.New())
 
 	r.Route("/pet", func(r chi.Router) {
 		r.Get("/", rest.GETListHandler(m))

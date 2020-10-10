@@ -43,7 +43,7 @@ async fn main() -> Result<(), String> {
 #[derive(Deserialize, Serialize, JsonSchema)]
 #[serde(rename_all = "camelCase")]
 struct Pet {
-    id: Option<i64>,
+    id: Option<String>,
     category: Option<Category>,
     name: String,
     photo_urls: Vec<String>,
@@ -57,7 +57,7 @@ struct Pet {
 #[derive(Deserialize, Serialize, JsonSchema)]
 #[serde(rename_all = "camelCase")]
 struct Category {
-    id: i64,
+    id: String,
     name: String,
 }
 
@@ -79,7 +79,7 @@ enum PetStatus {
 #[derive(Deserialize, JsonSchema)]
 #[serde(rename_all = "camelCase")]
 struct PathParams {
-    pet_id: i64,
+    pet_id: String,
 }
 
 #[allow(unused_variables)]

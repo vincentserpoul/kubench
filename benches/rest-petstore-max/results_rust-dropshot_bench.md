@@ -1,28 +1,28 @@
 # HTTP rust-dropshot raw HTTP GET benchmarks
 
-Running 2m test @ http://rust-dropshot/pet/1
+Running 2m test @ http://rust-dropshot/pet/bu0oinkev9hd10a678c0
   4 threads and 200 connections
 ```
 NAME                       READY   UP-TO-DATE   AVAILABLE   AGE
-bencher-deployment         1/1     1            1           89s
-rust-dropshot-deployment   3/3     3            3           81s
+bencher-deployment         1/1     1            1           99s
+rust-dropshot-deployment   3/3     3            3           80s
 ```
 ```
 NAME                                        CPU(cores)   MEMORY(bytes)   
-bencher-deployment-cf89ddc67-rt7k7          131m         4Mi             
-rust-dropshot-deployment-57bcbc5986-5fs6v   94m          3Mi             
-rust-dropshot-deployment-57bcbc5986-bm4hq   1026m        3Mi             
-rust-dropshot-deployment-57bcbc5986-crltd   303m         3Mi             
+bencher-deployment-cf89ddc67-2c8cg          475m         5Mi             
+rust-dropshot-deployment-57bcbc5986-82h6x   120m         3Mi             
+rust-dropshot-deployment-57bcbc5986-jdhtf   472m         3Mi             
+rust-dropshot-deployment-57bcbc5986-tn6jg   83m          3Mi             
 ```
  
   Thread Stats   Avg      Stdev     Max   +/- Stdev
-    Latency     2.96ms    3.00ms 166.03ms   92.76%
-    Req/Sec    17.23k     1.93k   26.54k    70.21%
+    Latency     2.69ms    2.63ms 144.45ms   93.08%
+    Req/Sec    18.59k     2.23k   30.70k    71.74%
   Latency Distribution
-     50%    2.42ms
-     75%    3.64ms
-     90%    5.30ms
-     99%   12.42ms
-  6172514 requests in 1.50m, 1.41GB read
-Requests/sec:  68522.79
-Transfer/sec:     16.08MB
+     50%    2.26ms
+     75%    3.32ms
+     90%    4.69ms
+     99%   10.69ms
+  6657156 requests in 1.50m, 1.53GB read
+Requests/sec:  73905.16
+Transfer/sec:     17.34MB
