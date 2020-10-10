@@ -44,13 +44,13 @@ same_cluster_bench_rest_petstore_wrk() {
     einfo "heating up pods"
 
     kubectl exec -it "$BENCH_POD" -c bencher -- /bin/sh -c \
-        "wrk --latency -t4 -c200 -d1s http://$APP_NAME/pet/1"
+        "wrk --latency -t4 -c200 -d1s http://$APP_NAME/pet/bu0oinkev9hd10a678c0"
     sleep 5s
 
     einfo "starting bench"
     metrics_get "$APP_NAME" "$FOLDER" &
     kubectl exec -it "$BENCH_POD" -c bencher -- /bin/sh -c \
-        "wrk --latency -t4 -c200 -d""$BENCH_DURATION""s http://$APP_NAME/pet/1" >>"$(printf "$FOLDER/results_%s_bench.md" "$APP_NAME")"
+        "wrk --latency -t4 -c200 -d""$BENCH_DURATION""s http://$APP_NAME/pet/bu0oinkev9hd10a678c0" >>"$(printf "$FOLDER/results_%s_bench.md" "$APP_NAME")"
 
     einfo "bench finished"
 }
@@ -59,7 +59,7 @@ same_cluster_bench_rest_petstore_wrk() {
 
 WITH_HPA=true
 BASE_DOCKER_REPO=${1:-vincentserpoul}
-readonly IMPL_REST_PETSTORE=('rust-dropshot')
+readonly IMPL_REST_PETSTORE=('rust-dropshot' 'go-induzo')
 
 bencher_deploy
 
