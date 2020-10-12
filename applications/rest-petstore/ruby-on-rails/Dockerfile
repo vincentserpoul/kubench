@@ -8,7 +8,8 @@ RUN apk add --update --no-cache \
 WORKDIR /app
 
 # Install gems
-ADD Gemfile* /app/
+COPY Gemfile* /app/
+
 RUN bundle config --global frozen 1 \
     && bundle install --without development test -j4 --retry 3 \
     # Remove unneeded files (cached *.gem, *.o, *.c)
