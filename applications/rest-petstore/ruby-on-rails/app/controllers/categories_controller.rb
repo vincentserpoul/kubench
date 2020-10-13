@@ -1,4 +1,4 @@
-class Api::CategoriesController < ApplicationController
+class CategoriesController < ApplicationController
   before_action :set_category, only: [:show, :update]
 
   def index
