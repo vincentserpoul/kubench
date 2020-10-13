@@ -59,7 +59,7 @@ same_cluster_bench_rest_petstore_wrk() {
 
 WITH_HPA=true
 BASE_DOCKER_REPO=${1:-vincentserpoul}
-readonly IMPL_REST_PETSTORE=('rust-dropshot' 'go-induzo')
+readonly IMPL_REST_PETSTORE=('rust-dropshot' 'go-induzo' 'ruby-on-rails')
 
 bencher_deploy
 
