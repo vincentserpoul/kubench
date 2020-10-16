@@ -2,10 +2,7 @@ package main
 
 import (
 	"net/http"
-	"time"
 )
-
-const artificialServiceLatency = 26 * time.Millisecond
 
 func main() {
 	http.HandleFunc("/", sayHello)
