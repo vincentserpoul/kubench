@@ -33,7 +33,7 @@ bencher_delete() {
 
 #=================================== b e n c h ================================#
 
-readonly BENCH_DURATION_S=90
+readonly BENCH_DURATION_S=300
 readonly METRICS_DELAY_S=$(("$BENCH_DURATION_S" * 2 / 3))
 readonly BENCH_RATE_S=2000
 

@@ -1,30 +1,35 @@
 # HTTP go-induzo raw HTTP GET benchmarks
 
-Running 2m test @ http://go-induzo/pet/bu0oinkev9hd10a678c0
+Running 5m test @ http://go-induzo/pet/bu0oinkev9hd10a678c0
   4 threads and 200 connections
 ```
 NAME                   READY   UP-TO-DATE   AVAILABLE   AGE
-bencher-deployment     1/1     1            1           3m23s
-go-induzo-deployment   3/6     6            3           81s
+bencher-deployment     1/1     1            1           9m6s
+go-induzo-deployment   10/10   10           10          3m40s
 ```
 ```
-NAME                                        CPU(cores)   MEMORY(bytes)   
-bencher-deployment-cf89ddc67-8fwt4          873m         5Mi             
-go-induzo-deployment-6dbd5fc974-59x4x       1017m        8Mi             
-go-induzo-deployment-6dbd5fc974-q47q8       1021m        8Mi             
-go-induzo-deployment-6dbd5fc974-wjlx4       1226m        9Mi             
-rust-dropshot-deployment-57bcbc5986-hwrcp   0m           1Mi             
-rust-dropshot-deployment-57bcbc5986-scn7q   0m           1Mi             
+NAME                                   CPU(cores)   MEMORY(bytes)   
+bencher-deployment-cf89ddc67-bwwgb     197m         4Mi             
+go-induzo-deployment-d6cbc56c6-97j62   1m           7Mi             
+go-induzo-deployment-d6cbc56c6-c2w24   0m           7Mi             
+go-induzo-deployment-d6cbc56c6-jh768   0m           7Mi             
+go-induzo-deployment-d6cbc56c6-mfdhb   0m           6Mi             
+go-induzo-deployment-d6cbc56c6-mh6mt   820m         11Mi            
+go-induzo-deployment-d6cbc56c6-pktn4   939m         11Mi            
+go-induzo-deployment-d6cbc56c6-vdjjj   1m           5Mi             
+go-induzo-deployment-d6cbc56c6-x64jw   893m         11Mi            
+go-induzo-deployment-d6cbc56c6-zhsp7   0m           5Mi             
+go-induzo-deployment-d6cbc56c6-zvf9m   0m           5Mi             
 ```
  
   Thread Stats   Avg      Stdev     Max   +/- Stdev
-    Latency     3.38ms    4.71ms  68.38ms   86.93%
-    Req/Sec    24.50k     3.13k   35.11k    68.87%
+    Latency    16.22ms    2.42ms 151.75ms   89.05%
+    Req/Sec     3.08k   241.63     6.59k    71.50%
   Latency Distribution
-     50%    1.14ms
-     75%    4.52ms
-     90%    9.61ms
-     99%   21.38ms
-  8773740 requests in 1.50m, 1.74GB read
-Requests/sec:  97377.95
-Transfer/sec:     19.78MB
+     50%   15.81ms
+     75%   16.57ms
+     90%   18.23ms
+     99%   27.97ms
+  3677481 requests in 5.00m, 747.02MB read
+Requests/sec:  12255.32
+Transfer/sec:      2.49MB

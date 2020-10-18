@@ -20,7 +20,8 @@ if [[ ! -d "$DIR_WS" ]]; then DIR_WS="$PWD"; fi
 
 WITH_HPA=true
 BASE_DOCKER_REPO=${1:-vincentserpoul}
-readonly IMPL_RAW_HTTP_GET=('go-std' 'rust-hyper' 'rust-actix' 'springboot')
+# readonly IMPL_RAW_HTTP_GET=('go-std' 'rust-hyper' 'rust-actix' 'springboot')
+readonly IMPL_RAW_HTTP_GET=('springboot')
 
 bencher_deploy
 

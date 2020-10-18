@@ -1,28 +1,35 @@
 # HTTP rust-dropshot raw HTTP GET benchmarks
 
-Running 2m test @ http://rust-dropshot/pet/bu0oinkev9hd10a678c0
+Running 5m test @ http://rust-dropshot/pet/bu0oinkev9hd10a678c0
   4 threads and 200 connections
 ```
 NAME                       READY   UP-TO-DATE   AVAILABLE   AGE
-bencher-deployment         1/1     1            1           91s
-rust-dropshot-deployment   6/6     6            6           82s
+bencher-deployment         1/1     1            1           3m46s
+rust-dropshot-deployment   10/10   10           10          3m41s
 ```
 ```
 NAME                                        CPU(cores)   MEMORY(bytes)   
-bencher-deployment-cf89ddc67-8fwt4          675m         5Mi             
-rust-dropshot-deployment-57bcbc5986-fsknw   1272m        3Mi             
-rust-dropshot-deployment-57bcbc5986-g8tzp   985m         3Mi             
-rust-dropshot-deployment-57bcbc5986-lxm98   956m         3Mi             
+bencher-deployment-cf89ddc67-bwwgb          186m         6Mi             
+rust-dropshot-deployment-786c74d74b-5rlqg   841m         2Mi             
+rust-dropshot-deployment-786c74d74b-8rsbg   899m         2Mi             
+rust-dropshot-deployment-786c74d74b-9t72g   0m           1Mi             
+rust-dropshot-deployment-786c74d74b-f6npk   0m           1Mi             
+rust-dropshot-deployment-786c74d74b-gssrr   0m           1Mi             
+rust-dropshot-deployment-786c74d74b-h9w97   0m           1Mi             
+rust-dropshot-deployment-786c74d74b-l5p58   733m         2Mi             
+rust-dropshot-deployment-786c74d74b-mx5sg   0m           1Mi             
+rust-dropshot-deployment-786c74d74b-v256l   0m           1Mi             
+rust-dropshot-deployment-786c74d74b-zdsj6   0m           1Mi             
 ```
  
   Thread Stats   Avg      Stdev     Max   +/- Stdev
-    Latency     2.71ms    2.72ms 152.30ms   93.01%
-    Req/Sec    18.61k     2.30k   32.36k    71.40%
+    Latency    17.52ms    2.85ms 159.30ms   89.65%
+    Req/Sec     2.85k   231.75     3.62k    72.11%
   Latency Distribution
-     50%    2.27ms
-     75%    3.34ms
-     90%    4.79ms
-     99%   11.05ms
-  6669970 requests in 1.50m, 1.53GB read
-Requests/sec:  73997.24
-Transfer/sec:     17.36MB
+     50%   17.04ms
+     75%   17.85ms
+     90%   19.76ms
+     99%   31.28ms
+  3408403 requests in 5.00m, 799.62MB read
+Requests/sec:  11357.73
+Transfer/sec:      2.66MB
