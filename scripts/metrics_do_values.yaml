@@ -2,3 +2,4 @@ args:
   - --logtostderr
   - --kubelet-preferred-address-types=InternalIP
   - --kubelet-insecure-tls
+  - --metric-resolution=10s

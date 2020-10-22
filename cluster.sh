@@ -61,6 +61,7 @@ if [ "$ACTION" == "create" ]; then
     elif [ "$PROVIDER" == "digitalocean" ]; then
         do_cluster_create kubench-do
         # add metrics for hpa
+        sleep 60
         helm install metrics stable/metrics-server --namespace kube-system -f "$DIR"/scripts/metrics_do_values.yaml
     else
         echo "non existing provider: $PROVIDER"

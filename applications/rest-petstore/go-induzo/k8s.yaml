@@ -34,6 +34,18 @@ spec:
             limits:
               memory: "100Mi"
               cpu: "1000m"
+          livenessProbe:
+            httpGet:
+              path: /pet
+              port: 8080
+            initialDelaySeconds: 1
+            periodSeconds: 5
+          readinessProbe:
+            httpGet:
+              path: /pet
+              port: 8080
+            initialDelaySeconds: 1
+            periodSeconds: 5
 ---
 kind: Service
 apiVersion: v1
