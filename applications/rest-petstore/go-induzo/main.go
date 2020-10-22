@@ -76,7 +76,7 @@ func (p *PetAPI) Get(context.Context, xid.ID) (interface{}, error) {
 }
 
 func (p *PetAPI) GetList(context.Context, crud.ListModifiers) (interface{}, error) {
-	return []*Pet{&Pet{}}, nil
+	return []*Pet{{Name: "Brickley"}}, nil
 }
 
 func (p *PetAPI) Update(context.Context, xid.ID, interface{}, io.Reader) (interface{}, error) {
